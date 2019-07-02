@@ -1,4 +1,6 @@
 //This code requires mongoose node module
+//testing git
+
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
