@@ -1,38 +1,21 @@
-//This code requires mongoose node module
-//testing git
 
 var mongoose = require('mongoose');
-var uniqueValidator = require('mongoose-unique-validator');
-var Schema = mongoose.Schema;
 
-var userProfile = {
-	user: "dbadmin",
-	pass: "password"
-};
 
-var connectionString = 'mongodb://' + userProfile.user + ':' + userProfile.pass +'@127.0.0.1:27017/userdb?authSource=admin';
-
-var userSchema = new Schema({
-	first_name: {type: String, min: 1, max: 50},
-	last_name: {type: String, min: 1, max: 50},
-	password: String,
-	email_id: {type: String, unique: true},
-	mob_number: String
-});
-userSchema.plugin(uniqueValidator);
-var userModel = mongoose.model('users', userSchema);  //'users' is the collection name in the db
+var userModel = require('./../mongoose_schema/user');  //'users' is the collection name in the db
 
 
 class DataService
 {
-	DataService()
+	constructor(connectionString)
 	{
-		console.log('data service object created..');
+		this.connectionString = connectionString;
+		console.log('dataservice object created');
 	}
 
 	Init()
 	{
-		mongoose.connect(connectionString, {
+		mongoose.connect(this.connectionString, {
 			useNewUrlParser: true
 		})
 		.then(() => 
@@ -46,6 +29,7 @@ class DataService
 	CreateUser(data)
 	{
 		var users = new userModel({
+			username: data.username,
 			first_name: data.first_name,
 			last_name: data.last_name,
 			password: data.password,
@@ -61,8 +45,22 @@ class DataService
 			{
 				console.log('user created', savedUser);
 			}
+			return 
 		});
 	}
+
+	ReadUser()
+	{
+		userModel.find({})
+			.then(data => {
+				console.log(data);
+			})
+			.catch(err => {
+				console.error(err);
+			})
+	}
+
+	
 }
 
-module.exports = new DataService();
+module.exports = DataService;
