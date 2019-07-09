@@ -21,7 +21,6 @@ class DataService
 		.then(() => 
 		{
 			console.log('Connected to mongoDb.....');
-		
 		})
 		.catch(err => console.error('Could not connect to mongoDb', err));
 	}

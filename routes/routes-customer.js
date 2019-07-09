@@ -17,7 +17,7 @@ router.post('/', async (req, res, next) =>
   
   try
   {
-    const customer = await customerService.create(body);
+    const customer = await customerService.createCustomer(body);
 
     if (body.guid != null)
     {
@@ -31,7 +31,7 @@ router.post('/', async (req, res, next) =>
 
   catch(err)
   {
-    if (err.name === "validationError")
+    if (err.name == "ValidationError")
     {
       return res.status(400).json({ error: err.message });
     }

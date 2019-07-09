@@ -8,7 +8,7 @@ var userProfile = {
 var connectionString = 'mongodb://' + userProfile.user + ':' + userProfile.pass +'@127.0.0.1:27017/userdb?authSource=admin';
 
 var dataService = new DataService(connectionString);
-dataService.Init();
+//dataService.Init();
 
 var data = {
     username: 'john123',
