@@ -48,15 +48,16 @@ class DataService
 		});
 	}
 
-	ReadUser()
+	ReadAllUser()
 	{
+		//return userModel.find({});
 		userModel.find({})
 			.then(data => {
 				console.log(data);
 			})
 			.catch(err => {
 				console.error(err);
-			})
+			});
 	}
 
 	

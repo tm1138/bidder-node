@@ -11,14 +11,16 @@ var dataService = new DataService(connectionString);
 //dataService.Init();
 
 var data = {
-    username: 'john123',
-    first_name: 'john',
+    username: 'tony123',
+    first_name: 'tony',
     last_name: 'sdfkj',
     password: 'asbfsdf',
-    email_id: 'asdfg@gmail.com',
-    mobile_number: '1234'
+    email_id: 'tonydfs@gmail.com',
+    mobile_number: '1234569854'
 };
 
-//dataService.CreateUser(data);
+dataService.CreateUser(data);
 
-dataService.ReadUser();
+//dataService.ReadAllUser();
+
+//console.log(allUsers);
