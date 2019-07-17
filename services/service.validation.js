@@ -6,7 +6,7 @@ let mobileNumberPattern = /[0-9]{10}/;
 let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/;
 
 const customerVSchema = {
-                        guid: {type: "string", min: 3},
+                        username: {type: "string", min: 3},
 
                         first_name: {type: "string", min: 1, max: 50, pattern: namePattern},
                         last_name: {type: "string", min: 1, max: 50, pattern: namePattern},

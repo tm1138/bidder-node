@@ -27,6 +27,7 @@ class DataService
 
 	CreateUser(data)
 	{
+		console.log(data);
 		var users = new userModel({
 			username: data.username,
 			first_name: data.first_name,
@@ -50,16 +51,30 @@ class DataService
 
 	ReadAllUser()
 	{
-		//return userModel.find({});
-		userModel.find({})
-			.then(data => {
-				console.log(data);
-			})
-			.catch(err => {
-				console.error(err);
-			});
+		return userModel.find({});
 	}
 
+	ReadUserById(userid)
+	{
+		return userModel.find({username: userid});
+	}
+
+	ReadUserByEmail(email)
+	{
+		return userModel.find({email_id: email});
+	}
+
+	UpdateUser(data)
+	{
+		var query = "";
+
+		//userModel.update()
+	}
+
+	DeleteUser(id)
+	{
+
+	}
 	
 }
 
